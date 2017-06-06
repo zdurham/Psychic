@@ -1,10 +1,46 @@
+
+body {
+	background-image: url("../images/binding_dark.png");
+	font-family: 'Roboto', sans-serif;
+}
+
 .jumbotron {
 	text-align: center;
 	margin: auto;
+	color: teal;
+	background-color: black;
+	padding: 20px 0px;
+	margin: 20px 0px;
+	font-family: 'Frank Ruhl Libre', sans-serif;
+}
+
+
+h1 {
+	border-bottom: 5px teal solid;
+	border-top: 5px teal solid;
 }
 
 
 #incorrectGuess {
 	display: inline-block;
 	border: 2px solid teal;
+	margin: 0px 5px;
+	padding: 5px;
+	color: #ddd;
+}
+
+img {
+	margin: auto;
+	width: 100%;;
+}
+
+#img-content {
+	border: 5px solid teal;
+	padding: 0px;
+}
+
+#game-content {
+	border: 5px solid teal;
+	background-color: black;
+	color: #ddd;
 }

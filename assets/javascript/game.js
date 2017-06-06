@@ -31,6 +31,16 @@ window.onload = function() {
 
 	//---------- End counts of each variable ----------//
 
+	// Reset Function
+
+	function reset() {
+		numGuess = 10;
+		guessBank = [];
+		document.getElementById("guessesLeft").innerHTML = "You have " + numGuess + " guesses remaining";
+		document.getElementById("wrong").innerHTML = "You have guessed: "
+		compLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+	};
+
 	//---------- Begin user input function ----------//
 
 	function input() {
@@ -40,15 +50,44 @@ window.onload = function() {
 			
 			console.log(guess)
 
-			if ((numGuess > 0) && (alphabet.indexOf(guess) > -1)) {
+			if ((numGuess > 0) && (alphabet.indexOf(guess) > -1) && (guessBank.indexOf(guess) <= -1 )) {
+				
+				// check for match between comp and user guess
 				if (guess === compLetter) {
-					wins++
+					winCounter++;
+					document.getElementById("wins").innerHTML = "Wins: " + winCounter;
 					alert("You guessed the correct letter! You're a master mind reader.")
+					reset();
+				}
+
+				else {
+					numGuess--;
+					guessBank.push(guess);
+					document.getElementById("guessesLeft").innerHTML = "You have " + numGuess + " guesses remaining";
+					document.getElementById("wrong").innerHTML += "<h3 id='incorrectGuess'>" + guess + "</h3>";
 				}
 			}
+
+			else if (guessBank.indexOf(guess) > -1) {
+				alert("You have already selected this letter!")
+			}
+
+			else if (alphabet.indexOf(guess) <= -1) {
+				alert("Please select a letter from the keyboard.")
+			}
+
+			else if (numGuess === 0) {
+				alert("You lost! Better luck next time!");
+				lossCounter++;
+				document.getElementById("losses").innerHTML = "Losses: " + lossCounter;
+				reset();
+			} 
+			
 		}
 	}
+
 input();
+
 	//---------- End user input function ----------//
 }
 
