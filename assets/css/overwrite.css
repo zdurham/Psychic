@@ -1,0 +1,10 @@
+.jumbotron {
+	text-align: center;
+	margin: auto;
+}
+
+
+#incorrectGuess {
+	display: inline-block;
+	border: 2px solid teal;
+}
